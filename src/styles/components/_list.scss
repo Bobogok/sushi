@@ -1,0 +1,118 @@
+.list {
+  position: relative;
+  overflow: hidden;
+  background-color: $red;
+
+  &__elems {
+    height: 100%;
+    padding: 15px 0;
+  }
+
+  &__image-arrow {
+    position: absolute;
+    bottom: 4%;
+    left: -15%;
+    width: 30%;
+    height: auto;
+  }
+
+  &__elem {
+    display: flex;
+    height: 25%;
+    cursor: pointer;
+
+    &:hover {
+      .list__image-rolls,
+      .list__image-fried {
+        margin-left: 7%;
+      }
+
+      .list__image-sushi,
+      .list__image-backed {
+        margin-left: 20%;
+      }
+    }
+  }
+
+  &__image-box {
+    flex: 1 1 70%;
+  }
+
+  &__title-rolls,
+  &__title-sushi,
+  &__title-fried,
+  &__title-backed {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    color: $white;
+    font-weight: bold;
+    line-height: 1.5;
+    text-transform: uppercase;
+  }
+
+  &__title-rolls,
+  &__title-sushi {
+    font-size: 1.5vw;
+  }
+
+  &__title-fried,
+  &__title-backed {
+    font-size: 1.2vw;
+  }
+
+  &__title-rolls,
+  &__title-fried {
+    justify-content: flex-start;
+  }
+
+  &__title-sushi,
+  &__title-backed {
+    justify-content: flex-end;
+  }
+
+  &__image-rolls,
+  &__image-fried,
+  &__image-sushi,
+  &__image-backed {
+    width: auto;
+    transition: all 1s;
+  }
+
+  &__image-rolls,
+  &__image-fried {
+    margin-left: -15%;
+  }
+
+  &__image-rolls {
+    height: 120%;
+  }
+
+  &__title-rolls {
+  }
+
+  &__image-sushi {
+    height: 110%;
+    margin-left: 46%;
+  }
+
+  &__title-sushi {
+  }
+
+  &__image-fried {
+    height: 105%;
+  }
+
+  &__title-fried {
+  }
+
+  &__image-backed {
+    height: 105%;
+    margin-left: 36%;
+  }
+
+  &__title-backed {
+    text-align: right;
+  }
+}

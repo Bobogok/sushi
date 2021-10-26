@@ -1,0 +1,35 @@
+.sups {
+  position: relative;
+  background: $red url('../../static/img/soups_shadows_desktop.png') no-repeat;
+  background-size: 106%;
+
+  &:hover {
+    .sups__image {
+      transform: rotate(-45deg);
+    }
+  }
+
+  &__image {
+    display: block;
+    width: 81%;
+    margin: -19.5% 8% 0 auto;
+    transform: rotate(-15deg);
+    transition: transform 1s;
+  }
+
+  &__image-arrows {
+    position: absolute;
+    right: -8%;
+    bottom: 8%;
+    width: 30%;
+  }
+
+  &__title {
+    margin: 5% 0;
+    padding-left: 13%;
+    color: $white;
+    font-weight: bold;
+    font-size: 3.5vw;
+    text-transform: uppercase;
+  }
+}

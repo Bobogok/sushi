@@ -1,0 +1,14 @@
+.other {
+  overflow: hidden;
+  cursor: pointer;
+
+  &__inner {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  &__elem {
+    height: 50%;
+  }
+}

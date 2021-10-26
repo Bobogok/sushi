@@ -1,0 +1,14 @@
+.catalog {
+  padding-top: 82px;
+
+  &__inner {
+    display: grid;
+    grid-row-gap: 10px;
+    grid-column-gap: 10px;
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  &__item {
+    height: 13.5vw;
+  }
+}

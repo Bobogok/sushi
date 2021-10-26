@@ -1,0 +1,56 @@
+.snacks {
+  background-color: $green;
+  cursor: pointer;
+
+  &__tempura,
+  &__drink {
+    display: flex;
+    height: 50%;
+  }
+
+  &__tempura:hover {
+    .snacks__image-tempura {
+      margin-left: 15%;
+    }
+  }
+
+  &__drink:hover {
+    .snacks__image-drink {
+      margin-top: -30%;
+    }
+  }
+
+  &__title-drink,
+  &__title-tempura {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $red;
+    font-weight: bold;
+    font-size: 1.8vw;
+    text-transform: uppercase;
+  }
+
+  &__title-tempura {
+    flex: 1 1 50%;
+  }
+
+  &__title-drink {
+    flex: 1 1 55%;
+  }
+
+  &__image-inner {
+    flex: 1 1 50%;
+  }
+
+  &__image-tempura {
+    margin-left: -15%;
+    transition: margin-left 1s;
+  }
+
+  &__image-drink {
+    width: 100%;
+    margin-top: -2.5%;
+    transition: margin-top 1s;
+  }
+}

@@ -1,0 +1,48 @@
+@import 'src/styles/libs/_vars.scss';
+
+.sets {
+  position: relative;
+  background-color: $blue;
+  cursor: pointer;
+
+  &:hover {
+    .sets__image-main {
+      margin-top: 0;
+    }
+
+    .sets__title {
+      margin-top: -10%;
+    }
+  }
+
+  &__inner {
+    overflow: hidden;
+  }
+
+  &__image-main {
+    width: 90%;
+    height: auto;
+    margin-top: -10%;
+    transition: margin-top 1s;
+  }
+
+  &__image-leaf {
+    position: absolute;
+    top: 25%;
+    right: -14%;
+    z-index: 1;
+    width: 22%;
+    height: auto;
+    overflow: visible;
+  }
+
+  &__title {
+    margin-left: 15%;
+    color: $white;
+    font-weight: bold;
+    font-size: 3.5vw;
+    text-transform: uppercase;
+    transition: margin-top 1s;
+    user-select: none;
+  }
+}

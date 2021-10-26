@@ -1,0 +1,184 @@
+@import 'src/styles/libs/_vars.scss';
+
+.header {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  max-height: 82px;
+  background-color: $white;
+
+  &__info-number:hover,
+  &__info-profile:hover,
+  &__about-link:hover {
+    color: $red;
+
+    svg {
+      fill: $red;
+    }
+  }
+
+  a,
+  &__info-city {
+    color: $grey;
+    font-size: 13px;
+  }
+
+  &__about,
+  &__info {
+    line-height: 30px;
+  }
+
+  &__inner {
+    display: flex;
+    align-items: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+  &__image-container {
+  }
+
+  &__image {
+  }
+
+  &__info {
+    margin-left: 36px;
+  }
+
+  &__info-top {
+    display: flex;
+  }
+
+  &__info-city {
+    display: flex;
+    align-items: center;
+    font-size: 15px;
+    cursor: pointer;
+
+    svg {
+      margin-left: 5px;
+    }
+
+    &:hover {
+      color: $red;
+
+      .header__info-city-icon {
+        fill: #f00;
+      }
+    }
+  }
+
+  &__info-number {
+    margin-left: 10px;
+    font-size: 16px;
+  }
+
+  &__info-bottom {
+  }
+
+  &__info-profile {
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    font-size: 13px;
+
+    svg {
+      width: 17px;
+      margin-left: 7px;
+      fill: $grey;
+    }
+  }
+
+  &__navbar {
+    display: none;
+    flex: 1 1 auto;
+
+    &--visible {
+      display: block;
+    }
+  }
+
+  &__navbar-elems {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  &__navbar-elem {
+    height: max-content;
+    padding: 8px 0;
+    cursor: pointer;
+    & + & {
+      margin-left: 15px;
+    }
+    &:hover {
+      a:not(.active) {
+        color: $red;
+      }
+    }
+  }
+
+  &__navbar-link {
+    font-size: 16px;
+
+    &.active {
+      padding: 8px 24px;
+      background-color: $red;
+      border-radius: 19px;
+      transition: background-color 0.2s;
+      color: $white;
+
+      &:hover {
+        background-color: darken($red, 10%);
+      }
+    }
+  }
+
+  &__about {
+    flex: 1 0 0%;
+    margin-right: 30px;
+    text-align: end;
+  }
+
+  &__about-top {
+  }
+
+  &__about-link {
+    & + & {
+      margin-left: 15px;
+    }
+  }
+
+  &__about-bottom {
+  }
+
+  &__cashback {
+    margin-right: 30px;
+    padding: 10px 25px;
+    color: $grey;
+    font-size: 15px;
+    background-color: $white;
+    border-radius: 19px;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 10%);
+    cursor: pointer;
+
+    &:active {
+      box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 10%) inset;
+    }
+  }
+
+  &__cashback-inner {
+    display: flex;
+    align-items: center;
+
+    span {
+      padding-right: 10px;
+    }
+  }
+
+  &__cart {
+  }
+
+  &__cart-link {
+  }
+}
