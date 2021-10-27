@@ -1,31 +1,33 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
-import { Route } from 'react-router-dom';
 
-import Card from '../Card';
+import { Card, LoadingBlock } from '../Card';
 
-import './sets.scss';
+import useFetchCatalog from '../hooks/useFetchCatalog';
 
 function Sets() {
+  const { catalogSets, isLoaded } = useFetchCatalog('sets');
+
   return (
-    <Route path="/catalog/sets">
-      <div className="catalog__inner container">
-        {Array.from(Array(12), (_, index) => {
-          if (index === 1) {
-            return <Card key={index} beige />;
-          }
+    <>
+      {isLoaded
+        ? catalogSets.map((obj, index) => {
+            if (index === 1) {
+              return <Card key={obj.id} {...obj} beige />;
+            }
 
-          if (index === 3) {
-            return <Card key={index} blue />;
-          }
+            if (index === 3) {
+              return <Card key={obj.id} {...obj} blue />;
+            }
 
-          if (index === 7) {
-            return <Card key={index} green />;
-          }
+            if (index === 7) {
+              return <Card key={obj.id} {...obj} green />;
+            }
 
-          return <Card key={index} />;
-        })}
-      </div>
-    </Route>
+            return <Card key={obj.id} {...obj} />;
+          })
+        : Array.from(Array(6), (_, index) => <LoadingBlock key={index} />)}
+    </>
   );
 }
 

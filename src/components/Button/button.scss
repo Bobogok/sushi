@@ -1,0 +1,36 @@
+@import 'src/styles/libs/_vars.scss';
+
+.button {
+  color: $white;
+  font-weight: bold;
+  font-size: 0.7vw;
+  background-color: $red;
+  border-radius: 4px;
+
+  &--controls {
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+
+  &:not(.button--controls):active {
+    box-shadow: 0 5px 10px 2px rgba(34, 60, 80, 0.2) inset;
+  }
+
+  &__controls-dec,
+  &__controls-inc {
+    height: 100%;
+
+    svg {
+      height: 100%;
+    }
+  }
+
+  &__controls-count {
+    font-size: 1.5vw;
+    color: $text;
+    width: 1.66vw;
+    font-weight: normal;
+  }
+}

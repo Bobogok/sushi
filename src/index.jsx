@@ -1,16 +1,23 @@
-import React, { StrictMode } from 'react';
+import React, { StrictMode, useState } from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
+import CartContext from './context';
 
 import './styles/index.scss';
 
 import App from './App';
 
-ReactDOM.render(
-  <StrictMode>
-    <Router>
-      <App />
-    </Router>
-  </StrictMode>,
-  document.getElementById('root')
-);
+const Main = () => {
+  const [cartItems, setCartItems] = useState([]);
+
+  return (
+    <StrictMode>
+      <Router>
+        <CartContext.Provider value={{ cartItems, setCartItems }}>
+          <App />
+        </CartContext.Provider>
+      </Router>
+    </StrictMode>
+  );
+};
+ReactDOM.render(<Main />, document.getElementById('root'));

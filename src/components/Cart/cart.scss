@@ -1,0 +1,22 @@
+@import 'src/styles/libs/_vars.scss';
+
+.cart {
+  &__info {
+    display: flex;
+    align-items: center;
+  }
+
+  &__count {
+    padding-right: 5px;
+  }
+
+  &__price {
+    padding: 0 10px 0 5px;
+  }
+
+  &__icon {
+    &.visible {
+      fill: $red;
+    }
+  }
+}
