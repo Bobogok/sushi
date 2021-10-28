@@ -1,0 +1,7 @@
+{
+  "proxies": {
+    "/items/": {
+      "origin": "https://react-sushi-test.herokuapp.com/"
+    }
+  }
+}

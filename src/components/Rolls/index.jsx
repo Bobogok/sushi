@@ -12,7 +12,7 @@ function Combo() {
     <>
       {isLoaded
         ? catalogSets.map((obj) => <Card key={obj.id} {...obj} />)
-        : Array.from(Array(6), (_, index) => <LoadingBlock key={index} />)}
+        : Array.from(Array(12), (_, index) => <LoadingBlock key={index} />)}
     </>
   );
 }

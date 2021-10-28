@@ -26,7 +26,7 @@ function Sets() {
 
             return <Card key={obj.id} {...obj} />;
           })
-        : Array.from(Array(6), (_, index) => <LoadingBlock key={index} />)}
+        : Array.from(Array(9), (_, index) => <LoadingBlock key={index} />)}
     </>
   );
 }
