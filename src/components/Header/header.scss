@@ -50,6 +50,16 @@
     display: flex;
   }
 
+  &__lang {
+    cursor: pointer;
+    margin-right: 10px;
+  }
+
+  &__lang-icon {
+    position: relative;
+    top: 10%;
+  }
+
   &__info-city {
     display: flex;
     align-items: center;

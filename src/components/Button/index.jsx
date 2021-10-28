@@ -2,11 +2,10 @@
 import React, { useContext } from 'react';
 import classNames from 'classnames';
 
-import CartContext from '../../context';
+import { CartContext } from '../../Context';
 
 import './button.scss';
 
-// eslint-disable-next-line no-unused-vars
 function Button({ className, currObj }) {
   const { cartItems, setCartItems } = useContext(CartContext);
 
@@ -16,11 +15,9 @@ function Button({ className, currObj }) {
 
   const deleteFromCart = () => {
     setCartItems((prev) => {
-      console.log(prev.slice(0, -1));
-      // FIX IT
-      // FIX IT
-      // FIX IT
-      return [...prev.filter((obj) => obj.id !== currObj.id).slice(0, -1)];
+      const indexDelete = prev.findIndex((obj) => obj.id === currObj.id);
+      prev.splice(indexDelete, 1);
+      return [...prev];
     });
   };
 

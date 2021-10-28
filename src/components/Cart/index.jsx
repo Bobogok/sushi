@@ -1,8 +1,7 @@
 import React from 'react';
 
 import useTotalCart from '../hooks/useTotalCart';
-
-import { ReactComponent as CartIcon } from '../../static/img/cart.svg';
+import CartIcon from './CartIcon';
 
 import './cart.scss';
 
@@ -18,7 +17,7 @@ function Cart() {
             <>
               <span className="cart__count">{totalElems} поз.</span>/
               <span className="cart__price">{totalPrice} ₽.</span>
-              <CartIcon />
+              <CartIcon visible />
             </>
           ) : (
             <CartIcon />

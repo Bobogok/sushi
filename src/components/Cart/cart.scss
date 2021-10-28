@@ -6,6 +6,12 @@
     align-items: center;
   }
 
+  &:hover {
+    .cart__info {
+      color: $red;
+    }
+  }
+
   &__count {
     padding-right: 5px;
   }

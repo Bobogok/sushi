@@ -8,7 +8,7 @@ function useFetchCatalog(category) {
   useEffect(() => {
     (async () => {
       try {
-        const res = await axios.get('https://run.mocky.io/v3/563c23fa-86bf-4a29-a9ae-783fd7502740');
+        const res = await axios.get('https://run.mocky.io/v3/a20d246d-ba15-4f00-a52f-29a561872e30');
 
         const { data } = await new Promise((resolve) => {
           setTimeout(() => {
