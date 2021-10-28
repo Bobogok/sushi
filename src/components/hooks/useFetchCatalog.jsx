@@ -8,7 +8,7 @@ function useFetchCatalog(category) {
   useEffect(() => {
     (async () => {
       try {
-        const res = await axios.get('/items'); // const { data } = ...
+        const res = await axios.get('https://react-sushi-test.herokuapp.com/items'); // const { data } = ...
 
         // delete delay
         const { data } = await new Promise((resolve) => {
