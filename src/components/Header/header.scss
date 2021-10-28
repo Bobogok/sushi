@@ -51,8 +51,8 @@
   }
 
   &__lang {
-    cursor: pointer;
     margin-right: 10px;
+    cursor: pointer;
   }
 
   &__lang-icon {
@@ -114,13 +114,16 @@
     align-items: center;
     justify-content: center;
   }
+
   &__navbar-elem {
     height: max-content;
     padding: 8px 0;
     cursor: pointer;
+
     & + & {
       margin-left: 15px;
     }
+
     &:hover {
       a:not(.active) {
         color: $red;
@@ -133,10 +136,10 @@
 
     &.active {
       padding: 8px 24px;
+      color: $white;
       background-color: $red;
       border-radius: 19px;
       transition: background-color 0.2s;
-      color: $white;
 
       &:hover {
         background-color: darken($red, 10%);

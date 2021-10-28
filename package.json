@@ -20,8 +20,11 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "lint": "stylelint 'src/styles/**/*.scss'"
+    "json": "json-server --watch public/db.json --port 3001",
+    "lint": "stylelint --fix ./src/**/*.scss",
+    "pretty": "prettier --write ./src"
   },
+  "proxy": "http://localhost:3001",
   "browserslist": {
     "production": [
       ">0.2%",

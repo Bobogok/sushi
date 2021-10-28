@@ -8,10 +8,10 @@
   border-radius: 4px;
 
   &--controls {
-    background-color: transparent;
     display: flex;
     align-items: center;
     justify-content: space-around;
+    background-color: transparent;
   }
 
   &:not(.button--controls):active {
@@ -28,9 +28,9 @@
   }
 
   &__controls-count {
-    font-size: 1.5vw;
-    color: $text;
     width: 1.66vw;
+    color: $text;
     font-weight: normal;
+    font-size: 1.5vw;
   }
 }

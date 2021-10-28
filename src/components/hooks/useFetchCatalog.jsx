@@ -8,15 +8,16 @@ function useFetchCatalog(category) {
   useEffect(() => {
     (async () => {
       try {
-        const res = await axios.get('https://run.mocky.io/v3/a20d246d-ba15-4f00-a52f-29a561872e30');
+        const res = await axios.get('/items'); // const { data } = ...
 
+        // delete delay
         const { data } = await new Promise((resolve) => {
           setTimeout(() => {
             resolve(res);
           }, 1000);
         });
 
-        setCatalogSets(data.items[category]);
+        setCatalogSets(data[category]);
         setIsLoading(true);
       } catch (e) {
         console.error(`Ошибка при запросе ${e}`);
