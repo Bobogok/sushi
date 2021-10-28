@@ -7,8 +7,8 @@ const middlewares = jsonServer.defaults({
   static: './build'
 });
 
-server.use('/items', proxy('https://react-sushi-test.herokuapp.com'));
 server.use(middlewares);
 server.use(router);
+server.use('/items', proxy('https://react-sushi-test.herokuapp.com'));
 
 server.listen(process.env.PORT || 3000);
