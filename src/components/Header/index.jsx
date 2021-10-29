@@ -1,39 +1,92 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React from 'react';
-import classNames from 'classnames';
-import { Link, NavLink, useLocation } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import { useMedia } from 'react-use';
+import useCheckPage from '../hooks/useCheckPage';
+import Navigation from '../Navigation';
 
 import Cart from '../Cart';
 
 import './header.scss';
 
 function Header() {
-  const navigationLinks = [
-    { title: 'Роллы', path: '/catalog/rolls' },
-    { title: 'Комбо', path: '/catalog/combo' },
-    { title: 'Сеты', path: '/catalog/sets' },
-    { title: 'Сеты Edition', path: '/catalog/sets-edition' },
-    { title: 'Суши', path: '/catalog/sushi' },
-    { title: 'Воки', path: '/catalog/wok' },
-    { title: 'Супы', path: '/catalog/sups' },
-    { title: 'Темпура', path: '/catalog/tempura' },
-    { title: 'Десерт', path: '/catalog/desserts' }
-  ];
+  const [cartOpened, setCartOpened] = useState(false);
 
-  const { pathname } = useLocation();
+  const openCart = () => {
+    setCartOpened(true);
+  };
+
+  const closeCart = () => {
+    setCartOpened(false);
+  };
+
+  const xxl = useMedia('(min-width: 1630px)');
+  const xl = useMedia('(min-width: 1150px)');
+  const tb = useMedia('(min-width: 750px) and (max-width: 1149px)');
+  const mb = useMedia('(max-width: 750px)');
+
+  // console.log(mb);
+
+  const checkMainPage = useCheckPage('/');
+
+  useEffect(() => {
+    const handler = (e) => {
+      if (e.target.className === 'header__overlay') {
+        setCartOpened(false);
+      }
+    };
+    document.addEventListener('mousedown', handler);
+
+    return () => document.removeEventListener('mousedown', handler);
+  }, []);
 
   return (
     <header className="header">
       <div className="header__inner container">
-        <Link to="/" className="header__imageContainer">
-          <img
-            className="header__image"
-            height="38"
-            width="auto"
-            src={`${process.env.PUBLIC_URL}/img/logo.png`}
-            alt="logo"
-          />
-        </Link>
+        {mb && !checkMainPage && (
+          <button onClick={openCart} type="button" className="header__mobile-btn">
+            <span className="header__mobile-icon">
+              <svg width="23" height="19" viewBox="0 0 23 19" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M.293 9.5h21.711m-21.711 8h15.844M.293 1.5h15.844"
+                  stroke="#9B9B9B"
+                  strokeWidth="3"
+                  fill="none"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </span>
+          </button>
+        )}
+        {cartOpened && (
+          <>
+            <div className="header__mobile-menu">
+              <Link to="/" onClick={closeCart}>
+                <img
+                  className="header__mobile-image"
+                  height="38"
+                  width="auto"
+                  src={`${process.env.PUBLIC_URL}/img/logo.png`}
+                  alt="logo"
+                />
+              </Link>
+              <Navigation className="header__mobile-navbar" closeCart={closeCart} mobile />
+            </div>
+            <div className="header__overlay" />
+          </>
+        )}
+        {!mb && (
+          <Link to="/" className="header__imageContainer">
+            <img
+              className="header__image"
+              height={xxl ? 38 : 42}
+              width="auto"
+              src={xxl ? `${process.env.PUBLIC_URL}/img/logo.png` : `${process.env.PUBLIC_URL}/img/banner-logo.png`}
+              alt="logo"
+            />
+          </Link>
+        )}
         <div className="header__info">
           <div className="header__info-top">
             <div className="header__lang">
@@ -88,9 +141,11 @@ function Header() {
                 </g>
               </svg>
             </div>
-            <a className="header__info-number" href="tel:88005503030">
-              8-800-550-30-30
-            </a>
+            {!mb && (
+              <a className="header__info-number" href="tel:88005503030">
+                8-800-550-30-30
+              </a>
+            )}
           </div>
           <div className="header__info-bottom">
             <a className="header__info-profile" href="#">
@@ -102,57 +157,49 @@ function Header() {
             </a>
           </div>
         </div>
-        <nav className={classNames('header__navbar', { 'header__navbar--visible': pathname !== '/' })}>
-          <ul className="header__navbar-elems">
-            {navigationLinks.map((obj) => (
-              <li key={obj.title} className="header__navbar-elem">
-                <NavLink to={obj.path} className="header__navbar-link">
-                  {obj.title}
-                </NavLink>
-              </li>
-            ))}
-            <li className="header__navbar-elem">
-              <a className="header__navbar-link">Ещё</a>
-            </li>
-          </ul>
-        </nav>
-        <div className="header__about" style={{ flex: pathname !== '/' && 'none' }}>
-          <div className="header__about-top">
-            <a href="#" className="header__about-link">
-              О компании
-            </a>
-            <a href="#" className="header__about-link">
-              Условия доставки
-            </a>
+        {xl && !checkMainPage && <Navigation className="header__navbar" />}
+        {xxl && (
+          <div className="header__about">
+            <div className="header__about-top">
+              <a href="#" className="header__about-link">
+                О компании
+              </a>
+              <a href="#" className="header__about-link">
+                Условия доставки
+              </a>
+            </div>
+            <div className="header__about-bottom">
+              <a href="#" className="header__about-link">
+                Пользовательское соглашение
+              </a>
+            </div>
           </div>
-          <div className="header__about-bottom">
-            <a href="#" className="header__about-link">
-              Пользовательское соглашение
-            </a>
+        )}
+        {xxl && (
+          <div className="header__cashback">
+            <div className="header__cashback-inner">
+              <span>Икринки</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="17" height="18" viewBox="0 0 17 18">
+                <defs>
+                  <linearGradient id="a" x1="77.907%" x2="19.092%" y1="8.74%" y2="90.154%">
+                    <stop offset="0%" stopColor="#FB9A59" />
+                    <stop offset="100%" stopColor="#F5612D" />
+                  </linearGradient>
+                </defs>
+                <g fill="none" transform="matrix(-1 0 0 1 17 .686)">
+                  <circle cx="8.5" cy="8.5" r="8.5" fill="url(#a)" />
+                  <circle cx="10.289" cy="6.711" r="5.816" fill="#F3F52D" opacity=".143" />
+                  <circle cx="5.368" cy="5.368" r="2.684" fill="#FFF" opacity=".684" />
+                </g>
+              </svg>
+            </div>
           </div>
-        </div>
-        <div className="header__cashback">
-          <div className="header__cashback-inner">
-            <span>Икринки</span>
-            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="18" viewBox="0 0 17 18">
-              <defs>
-                <linearGradient id="a" x1="77.907%" x2="19.092%" y1="8.74%" y2="90.154%">
-                  <stop offset="0%" stopColor="#FB9A59" />
-                  <stop offset="100%" stopColor="#F5612D" />
-                </linearGradient>
-              </defs>
-              <g fill="none" transform="matrix(-1 0 0 1 17 .686)">
-                <circle cx="8.5" cy="8.5" r="8.5" fill="url(#a)" />
-                <circle cx="10.289" cy="6.711" r="5.816" fill="#F3F52D" opacity=".143" />
-                <circle cx="5.368" cy="5.368" r="2.684" fill="#FFF" opacity=".684" />
-              </g>
-            </svg>
-          </div>
-        </div>
+        )}
         <div className="header__cart">
           <Cart />
         </div>
       </div>
+      {tb && !checkMainPage && <Navigation className="header__navbar" />}
     </header>
   );
 }

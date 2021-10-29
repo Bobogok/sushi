@@ -46,3 +46,12 @@
     user-select: none;
   }
 }
+
+@media (max-width: 1200px) {
+  .sets {
+    &__image-main {
+      width: 45%;
+      height: auto;
+    }
+  }
+}

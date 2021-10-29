@@ -51,3 +51,15 @@
     width: 27%;
   }
 }
+
+@media (max-width: 1200px) {
+  .wok {
+    &__title-inner {
+      padding: 5%;
+    }
+
+    &__image-main {
+      width: 40%;
+    }
+  }
+}

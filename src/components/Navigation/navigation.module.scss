@@ -1,0 +1,56 @@
+@import 'src/styles/libs/_vars.scss';
+
+.navigation {
+  flex: 1 1 auto;
+
+  &--mb {
+    flex-direction: column;
+
+    .elem {
+      margin-left: 0;
+      padding: 20px 0;
+    }
+
+    .link {
+      font-size: 30px !important;
+    }
+  }
+}
+
+.elems {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.elem {
+  height: max-content;
+  padding: 8px 0;
+  cursor: pointer;
+
+  & + & {
+    margin-left: 15px;
+  }
+
+  &:hover {
+    a:not(.active) {
+      color: $red;
+    }
+  }
+}
+
+.link {
+  font-size: 16px;
+
+  &.active {
+    padding: 8px 24px;
+    color: $white;
+    background-color: $red;
+    border-radius: 19px;
+    transition: background-color 0.2s;
+
+    &:hover {
+      background-color: darken($red, 10%);
+    }
+  }
+}

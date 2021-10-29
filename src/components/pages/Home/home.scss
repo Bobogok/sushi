@@ -9,4 +9,32 @@
   &__elem {
     height: 41.3vw;
   }
+
+  &__mobile-menu-elems {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__mobile-menu-elem {
+    font-size: 22px;
+    font-weight: bold;
+
+    & + & {
+      margin-top: 55px;
+    }
+  }
+}
+
+@media (max-width: 1200px) {
+  .home {
+    &__inner {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    &__elem {
+      height: 405px;
+    }
+  }
 }

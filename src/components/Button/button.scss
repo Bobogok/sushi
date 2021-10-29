@@ -34,3 +34,11 @@
     font-size: 1.5vw;
   }
 }
+
+@media (max-width: 1150px) {
+  .button {
+    &__controls-count {
+      font-size: 2vw;
+    }
+  }
+}

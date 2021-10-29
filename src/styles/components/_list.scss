@@ -116,3 +116,13 @@
     text-align: right;
   }
 }
+
+@media (max-width: 1200px) {
+  .list {
+    &__elems {
+      margin: 0 auto;
+      padding: 0;
+      width: 270px;
+    }
+  }
+}
