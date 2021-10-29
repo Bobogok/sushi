@@ -175,7 +175,7 @@ function Header() {
             </div>
           </div>
         )}
-        {xxl && (
+        {/* {xxl && (
           <div className="header__cashback">
             <div className="header__cashback-inner">
               <span>Икринки</span>
@@ -194,7 +194,7 @@ function Header() {
               </svg>
             </div>
           </div>
-        )}
+        )} */}
         <div className="header__cart">
           <Cart />
         </div>
