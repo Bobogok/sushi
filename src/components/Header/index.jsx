@@ -1,16 +1,22 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { useMedia } from 'react-use';
-import useCheckPage from '../hooks/useCheckPage';
-import Navigation from '../Navigation';
+import useMediaQueries from '../hooks/useMediaQueries';
+import useCheckPage from './hooks/useCheckPage';
 
-import Cart from '../Cart';
+import Logo from './Logo';
+import Navigation from './Navigation';
+import Cashback from './Cashback';
+import Cart from './Cart';
 
-import './header.scss';
+import styles from './header.module.scss';
+
+console.log(styles);
 
 function Header() {
   const [cartOpened, setCartOpened] = useState(false);
+  const checkMainPage = useCheckPage('/');
+  const { xxl, tb, mb, smb } = useMediaQueries();
 
   const openCart = () => {
     setCartOpened(true);
@@ -20,18 +26,9 @@ function Header() {
     setCartOpened(false);
   };
 
-  const xxl = useMedia('(min-width: 1630px)');
-  const xl = useMedia('(min-width: 1150px)');
-  const tb = useMedia('(min-width: 750px) and (max-width: 1149px)');
-  const mb = useMedia('(max-width: 750px)');
-
-  // console.log(mb);
-
-  const checkMainPage = useCheckPage('/');
-
   useEffect(() => {
     const handler = (e) => {
-      if (e.target.className === 'header__overlay') {
+      if (e.target.className === `${styles.overlay} ${styles.visible}`) {
         setCartOpened(false);
       }
     };
@@ -41,11 +38,11 @@ function Header() {
   }, []);
 
   return (
-    <header className="header">
-      <div className="header__inner container">
+    <header className={styles.header}>
+      <div className={`${styles.inner} container`}>
         {mb && !checkMainPage && (
-          <button onClick={openCart} type="button" className="header__mobile-btn">
-            <span className="header__mobile-icon">
+          <button onClick={openCart} type="button" className={styles.mobileBtn}>
+            <span className={styles.mobileIcon}>
               <svg width="23" height="19" viewBox="0 0 23 19" xmlns="http://www.w3.org/2000/svg">
                 <path
                   d="M.293 9.5h21.711m-21.711 8h15.844M.293 1.5h15.844"
@@ -59,39 +56,33 @@ function Header() {
             </span>
           </button>
         )}
-        {cartOpened && (
+        {mb && (
           <>
-            <div className="header__mobile-menu">
+            <div className={`${styles.mobileMenu} ${cartOpened ? styles.visible : ''}`}>
               <Link to="/" onClick={closeCart}>
                 <img
-                  className="header__mobile-image"
+                  className={styles.mobileImage}
                   height="38"
                   width="auto"
-                  src={`${process.env.PUBLIC_URL}/img/logo.png`}
+                  src={smb ? `${process.env.PUBLIC_URL}/img/banner-logo.png` : `${process.env.PUBLIC_URL}/img/logo.png`}
                   alt="logo"
                 />
               </Link>
-              <Navigation className="header__mobile-navbar" closeCart={closeCart} mobile />
+              <Navigation className={styles.mobileNavbar} closeCart={closeCart} mobile />
             </div>
-            <div className="header__overlay" />
+            <div className={`${styles.overlay} ${cartOpened ? styles.visible : ''}`} />
           </>
         )}
         {!mb && (
-          <Link to="/" className="header__imageContainer">
-            <img
-              className="header__image"
-              height={xxl ? 38 : 42}
-              width="auto"
-              src={xxl ? `${process.env.PUBLIC_URL}/img/logo.png` : `${process.env.PUBLIC_URL}/img/banner-logo.png`}
-              alt="logo"
-            />
+          <Link to="/" className={styles.imageContainer}>
+            <Logo />
           </Link>
         )}
-        <div className="header__info">
-          <div className="header__info-top">
-            <div className="header__lang">
+        <div className={styles.info}>
+          <div className={styles.infoTop}>
+            <div className={styles.lang}>
               <svg
-                className="header__lang-icon"
+                className={styles.langIcon}
                 width="22"
                 height="22"
                 viewBox="0 0 22 22"
@@ -113,7 +104,7 @@ function Header() {
                 </g>
               </svg>
             </div>
-            <div className="header__info-city">
+            <a className={styles.city}>
               Волгоград
               <svg
                 width="13px"
@@ -130,7 +121,7 @@ function Header() {
                         <g>
                           <rect x="0" y="0" width="20" height="20" />
                           <path
-                            className="header__info-city-icon"
+                            className={styles.cityIcon}
                             d="M8.12,9.29 L12,13.17 L15.88,9.29 C16.27,8.9 16.9,8.9 17.29,9.29 C17.68,9.68 17.68,10.31 17.29,10.7 L12.7,15.29 C12.31,15.68 11.68,15.68 11.29,15.29 L6.7,10.7 C6.31,10.31 6.31,9.68 6.7,9.29 C7.09,8.91 7.73,8.9 8.12,9.29 Z"
                             fill="#999"
                           />
@@ -140,66 +131,45 @@ function Header() {
                   </g>
                 </g>
               </svg>
-            </div>
-            {!mb && (
-              <a className="header__info-number" href="tel:88005503030">
-                8-800-550-30-30
-              </a>
-            )}
+            </a>
+            <a className={styles.number} href="tel:88005503030">
+              8-800-550-30-30
+            </a>
           </div>
-          <div className="header__info-bottom">
-            <a className="header__info-profile" href="#">
-              Личный кабинет
-              <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="20">
-                <path d="M0 0h24v24H0z" fill="none" />
-                <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
-              </svg>
+          <a className={styles.profile}>
+            Личный кабинет
+            <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="20">
+              <path d="M0 0h24v24H0z" fill="none" />
+              <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
+            </svg>
+          </a>
+        </div>
+        {!tb && !mb && !checkMainPage && <Navigation className={styles.navbar} />}
+        <div className={styles.about}>
+          <div className={styles.aboutTop}>
+            <a className={styles.aboutLink} href="#">
+              О компании
+            </a>
+            <a className={styles.aboutLink} href="#">
+              Условия доставки
+            </a>
+          </div>
+          <div className={styles.aboutBottom}>
+            <a className={styles.aboutLink} href="#">
+              Пользовательское соглашение
             </a>
           </div>
         </div>
-        {xl && !checkMainPage && <Navigation className="header__navbar" />}
         {xxl && (
-          <div className="header__about">
-            <div className="header__about-top">
-              <a href="#" className="header__about-link">
-                О компании
-              </a>
-              <a href="#" className="header__about-link">
-                Условия доставки
-              </a>
-            </div>
-            <div className="header__about-bottom">
-              <a href="#" className="header__about-link">
-                Пользовательское соглашение
-              </a>
-            </div>
+          <div className={styles.cashback}>
+            <Cashback />
           </div>
         )}
-        {/* {xxl && (
-          <div className="header__cashback">
-            <div className="header__cashback-inner">
-              <span>Икринки</span>
-              <svg xmlns="http://www.w3.org/2000/svg" width="17" height="18" viewBox="0 0 17 18">
-                <defs>
-                  <linearGradient id="a" x1="77.907%" x2="19.092%" y1="8.74%" y2="90.154%">
-                    <stop offset="0%" stopColor="#FB9A59" />
-                    <stop offset="100%" stopColor="#F5612D" />
-                  </linearGradient>
-                </defs>
-                <g fill="none" transform="matrix(-1 0 0 1 17 .686)">
-                  <circle cx="8.5" cy="8.5" r="8.5" fill="url(#a)" />
-                  <circle cx="10.289" cy="6.711" r="5.816" fill="#F3F52D" opacity=".143" />
-                  <circle cx="5.368" cy="5.368" r="2.684" fill="#FFF" opacity=".684" />
-                </g>
-              </svg>
-            </div>
-          </div>
-        )} */}
-        <div className="header__cart">
+        <div className={styles.cart}>
           <Cart />
         </div>
       </div>
-      {tb && !checkMainPage && <Navigation className="header__navbar" />}
+      {tb && !checkMainPage && <Navigation className={styles.navbar} />}
     </header>
   );
 }

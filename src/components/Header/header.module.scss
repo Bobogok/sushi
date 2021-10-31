@@ -1,0 +1,227 @@
+@import 'src/styles/libs/_vars.scss';
+
+.header {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  max-height: 82px;
+  background-color: $white;
+}
+
+.number:hover,
+.profile:hover,
+.aboutLink:hover {
+  color: $red;
+
+  svg {
+    fill: $red;
+  }
+}
+
+.header {
+  a {
+    color: $grey;
+  }
+}
+
+a,
+.city,
+.profile,
+.aboutLink {
+  font-size: 13px;
+}
+
+.about,
+.info {
+  line-height: 30px;
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.info {
+  margin-left: 36px;
+}
+
+.infoTop {
+  display: flex;
+}
+
+.lang {
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.langIcon {
+  position: relative;
+  top: 10%;
+}
+
+.city {
+  display: flex;
+  align-items: center;
+  font-size: 15px;
+  cursor: pointer;
+
+  svg {
+    margin-left: 5px;
+  }
+
+  &:hover {
+    color: $red;
+
+    .cityIcon {
+      fill: #f00;
+    }
+  }
+}
+
+.number {
+  margin-left: 10px;
+  font-size: 16px;
+}
+
+.profile {
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+  font-size: 13px;
+  cursor: pointer;
+
+  svg {
+    width: 17px;
+    margin-left: 7px;
+    fill: $grey;
+  }
+}
+
+.about {
+  flex: 0 0 auto;
+  margin-right: 30px;
+  text-align: end;
+}
+
+.aboutTop {
+}
+
+.aboutLink {
+  & + & {
+    margin-left: 15px;
+  }
+}
+
+.aboutBottom {
+}
+
+.cashback {
+  margin-right: 30px;
+}
+
+.mobileBtn {
+  background-color: transparent;
+}
+
+.mobileIcon {
+  width: 23px;
+  height: 19px;
+}
+
+.mobileMenu {
+  transform: translateX(-100%);
+  transition: transform 0.3s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 85%;
+  height: auto;
+  max-height: none;
+  overflow-y: auto;
+  background-color: $white;
+  z-index: 1100;
+
+  &.visible {
+    transform: translateX(0%);
+  }
+}
+
+.mobileNavbar {
+  height: auto;
+}
+
+.mobileImage {
+  margin: 20px 0;
+  margin-left: 15px;
+}
+
+.overlay {
+  display: none;
+  opacity: 0;
+  transition: opacity 0.3s;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1000;
+  background-color: rgba(3, 3, 3, 0.6);
+
+  &.visible {
+    display: block;
+    opacity: 1;
+  }
+}
+
+@media (max-width: 1770px) {
+  .cashback {
+    display: none;
+  }
+}
+
+@media (max-width: 1629px) {
+  .number {
+    display: none;
+    max-height: none;
+  }
+
+  .info {
+    margin-left: 2vw;
+  }
+
+  .about {
+    margin-right: 2vw;
+  }
+}
+
+@media (max-width: 1280px) {
+  .about {
+    display: none;
+  }
+}
+
+@media (max-width: 990px) {
+  .cart {
+    flex: 1 1 100%;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .navbar {
+    padding: 13px 0;
+  }
+}
+
+@media (max-width: 635px) {
+  .info {
+    margin-left: 5vw;
+  }
+}

@@ -2,6 +2,12 @@
 
 .navigation {
   flex: 1 1 auto;
+}
+
+.elems {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   &--mb {
     flex-direction: column;
@@ -15,12 +21,6 @@
       font-size: 30px !important;
     }
   }
-}
-
-.elems {
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .elem {
@@ -37,6 +37,12 @@
       color: $red;
     }
   }
+
+  &--mb {
+    & + & {
+      margin-left: 0px;
+    }
+  }
 }
 
 .link {
@@ -51,6 +57,20 @@
 
     &:hover {
       background-color: darken($red, 10%);
+    }
+  }
+}
+
+@media (max-width: 635px) {
+  .navigation {
+    flex: none;
+  }
+}
+
+@media (min-width: 635px) and (max-width: 1150px) {
+  .elem {
+    & + & {
+      margin-left: 11px;
     }
   }
 }

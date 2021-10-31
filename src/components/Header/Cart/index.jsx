@@ -15,8 +15,8 @@ function Cart() {
         <a href="#" className="cart__info">
           {totalElems !== 0 ? (
             <>
-              <span className="cart__count">{totalElems} поз.</span>/
-              <span className="cart__price">{totalPrice} ₽.</span>
+              <span className="cart__count">{totalElems}&nbsp;поз.</span>/
+              <span className="cart__price">{totalPrice}&nbsp;₽.</span>
               <CartIcon visible />
             </>
           ) : (

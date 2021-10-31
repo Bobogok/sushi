@@ -20,17 +20,17 @@ function Navigations({ className, closeCart, mobile }) {
 
   return (
     <nav className={classNames(className, styles.navigation)}>
-      <ul className={classNames(styles.elems, { [styles['navigation--mb']]: mobile })}>
+      <ul className={classNames(styles.elems, { [styles['elems--mb']]: mobile })}>
         {navigationLinks.map((obj) =>
           obj === navigationLinks.at(-1) ? (
-            <li key={obj.title} className={styles.elem}>
+            <li key={obj.title} className={classNames(styles.elem, { [styles['elem--mb']]: mobile })}>
               {
                 // eslint-disable-next-line jsx-a11y/anchor-is-valid
                 <a className={styles.link}>{obj.title}</a>
               }
             </li>
           ) : (
-            <li key={obj.title} className={styles.elem}>
+            <li key={obj.title} className={classNames(styles.elem, { [styles['elem--mb']]: mobile })}>
               <NavLink
                 to={obj.path}
                 className={styles.link}
