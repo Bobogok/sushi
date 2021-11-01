@@ -209,6 +209,10 @@ a,
 }
 
 @media (max-width: 990px) {
+  .header {
+    max-height: none;
+  }
+
   .cart {
     flex: 1 1 100%;
     display: flex;
@@ -223,5 +227,11 @@ a,
 @media (max-width: 635px) {
   .info {
     margin-left: 5vw;
+  }
+}
+
+@media (max-width: 375px) {
+  .header {
+    padding: 17px 0;
   }
 }

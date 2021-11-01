@@ -1,0 +1,190 @@
+@import 'src/styles/libs/_vars.scss';
+
+.card {
+  display: flex;
+  background-color: $card-background;
+  cursor: pointer;
+
+  &--beige {
+    background-color: #ffd8bc;
+  }
+
+  &--blue {
+    background-color: #8ed8f7;
+  }
+
+  &--green {
+    background-color: #b2f0a0;
+  }
+}
+
+.imageWrapper {
+  display: flex;
+  flex: 1 0 60%;
+  align-items: center;
+  justify-content: center;
+}
+
+.image {
+  max-height: 13.5vw;
+}
+
+.infoBox {
+  display: flex;
+  flex-direction: column;
+  padding: 0.9vw;
+}
+
+.infoBoxTop {
+}
+
+.title {
+  padding-bottom: 5px;
+  color: $text;
+  font-size: 1.15vw;
+  line-height: 1;
+}
+
+.desc {
+  overflow: hidden;
+  color: $description;
+  font-size: 0.67vw;
+  line-height: 1.2em;
+}
+
+.infoBoxBottom {
+  display: flex;
+  flex: 1 0 0%;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.personWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 26px;
+  margin-bottom: 0.4vw;
+  background-color: rgba(67, 67, 67, 0.1);
+  border-radius: 15px;
+}
+
+.person {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.personCount {
+  margin-left: 7px;
+  color: #9b9b9b;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.price {
+  margin-right: 5%;
+  font-size: 1.5vw;
+
+  svg {
+    height: 1.1vw;
+  }
+}
+
+.button {
+  flex: 0 0 45%;
+  width: 100%;
+  height: 2vw;
+}
+
+@media (max-width: 1150px) {
+  .card {
+    height: 22vw;
+  }
+
+  .image {
+    max-height: 16vw;
+  }
+
+  .title {
+    font-size: 24px;
+  }
+
+  .desc {
+    font-size: 13px;
+  }
+
+  .personWrapper {
+    margin-bottom: 1vw;
+  }
+
+  .price {
+    font-size: 24px;
+  }
+
+  .button {
+    height: 3.5vw;
+    font-size: 1vw;
+  }
+}
+
+@media (max-width: 990px) {
+  .card {
+    height: 32vw;
+  }
+
+  .imageBox {
+    flex: 1 0 50%;
+  }
+
+  .image {
+    max-height: 35vw;
+  }
+
+  .infoBox {
+    padding: 1.7vw;
+  }
+
+  .button {
+    flex: 0 0 25%;
+    height: 3.5vw;
+    font-size: 1.35vw;
+  }
+}
+
+@media (max-width: 750px) {
+  .button {
+    height: 5vw;
+    font-size: 1.75vw;
+  }
+}
+
+@media (max-width: 635px) {
+  .card {
+    min-height: 30vh;
+  }
+
+  .imageWrapper {
+    flex: 1 0 40%;
+  }
+
+  .price {
+    svg {
+      height: 1.5vh;
+    }
+  }
+
+  .button {
+    font-size: 1.75vh;
+    height: 50px;
+    width: 10vh;
+    flex: none;
+  }
+}

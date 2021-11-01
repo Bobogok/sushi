@@ -20,6 +20,7 @@ function useFetchCatalog(category) {
         setCatalogSets(data[category]);
         setIsLoading(true);
       } catch (e) {
+        // eslint-disable-next-line no-console
         console.error(`Ошибка при запросе ${e}`);
       }
     })();

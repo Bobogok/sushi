@@ -1,0 +1,42 @@
+@import 'src/styles/libs/_vars.scss';
+
+.button {
+  color: $white;
+  font-weight: bold;
+  font-size: 0.7vw;
+  background-color: $red;
+  border-radius: 4px;
+
+  &--controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background-color: transparent;
+  }
+}
+
+.button:not(.button--controls):active {
+  box-shadow: 0 5px 10px 2px rgba(34, 60, 80, 0.2) inset;
+}
+
+.decrement,
+.increment {
+  height: 100%;
+
+  svg {
+    height: 100%;
+  }
+}
+
+.count {
+  width: 1.66vw;
+  color: $text;
+  font-weight: normal;
+  font-size: 1.5vw;
+}
+
+@media (max-width: 1150px) {
+  .count {
+    font-size: 2vw;
+  }
+}

@@ -1,8 +1,6 @@
 import React from 'react';
 import styles from './cashback.module.scss';
 
-console.log(styles);
-
 function Cashback() {
   return (
     <div className={styles.button}>

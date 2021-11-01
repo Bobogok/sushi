@@ -5,8 +5,8 @@ function LoadingBlock() {
   return (
     <ContentLoader
       speed={2}
-      width={603}
-      height={260}
+      // width={603}
+      // height={260}
       viewBox="0 0 603 260"
       backgroundColor="#f3f3f3"
       foregroundColor="#f32b2b"

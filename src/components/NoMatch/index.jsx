@@ -9,7 +9,8 @@ function NoMatch() {
           position: 'fixed',
           left: '50%',
           top: '50%',
-          transform: 'translate(-50%, -50%)'
+          transform: 'translate(-50%, -50%)',
+          zIndex: 1
         }}
       >
         Not found <b>404</b>

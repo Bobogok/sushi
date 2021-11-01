@@ -2,9 +2,9 @@
 import React, { useContext } from 'react';
 import classNames from 'classnames';
 
-import { CartContext } from '../../Context';
+import { CartContext } from '../../../../Context';
 
-import './button.scss';
+import styles from './button.module.scss';
 
 function Button({ className, currObj }) {
   const { cartItems, setCartItems } = useContext(CartContext);
@@ -26,8 +26,11 @@ function Button({ className, currObj }) {
   const controlsToCart = cartItems.find((obj) => obj.id === currObj.id);
 
   return controlsToCart ? (
-    <button className={classNames('button', className, { 'button--controls': controlsToCart })} type="button">
-      <div className="button__controls-dec">
+    <button
+      className={classNames(styles.button, className, { [styles['button--controls']]: controlsToCart })}
+      type="button"
+    >
+      <div className={styles.decrement}>
         <svg onClick={deleteFromCart} xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22">
           <path
             fillRule="evenodd"
@@ -35,8 +38,8 @@ function Button({ className, currObj }) {
           />
         </svg>
       </div>
-      <div className="button__controls-count">{countInCart}</div>
-      <div className="button__controls-inc">
+      <div className={styles.count}>{countInCart}</div>
+      <div className={styles.increment}>
         <svg onClick={addToCart} xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22">
           <path
             fillRule="evenodd"
@@ -46,7 +49,7 @@ function Button({ className, currObj }) {
       </div>
     </button>
   ) : (
-    <button className={classNames('button', className)} onClick={addToCart} type="button">
+    <button className={classNames(styles.button, className)} onClick={addToCart} type="button">
       В КОРЗИНУ
     </button>
   );

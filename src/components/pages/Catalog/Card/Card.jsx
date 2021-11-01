@@ -3,7 +3,7 @@ import classNames from 'classnames';
 
 import Button from '../Button';
 
-import './card.scss';
+import styles from './card.module.scss';
 
 function Card({ id, title, desc, person, price, imageURL, beige, blue, green }) {
   const currObj = {
@@ -15,18 +15,24 @@ function Card({ id, title, desc, person, price, imageURL, beige, blue, green }) 
   };
 
   return (
-    <div className={classNames('card', { 'card--beige': beige, 'card--blue': blue, 'card--green': green })}>
-      <div className="card__image-box">
-        <img className="card__image" height="312" src={imageURL} alt="" />
+    <div
+      className={classNames(styles.card, {
+        [styles['card--beige']]: beige,
+        [styles['card--blue']]: blue,
+        [styles['card--green']]: green
+      })}
+    >
+      <div className={styles.imageWrapper}>
+        <img className={styles.image} height="312" src={imageURL} alt="" />
       </div>
-      <div className="card__info-box">
-        <div className="card__info-box-top">
-          <div className="card__info-title">{title}</div>
-          <p className="card__info-desc">{desc}</p>
+      <div className={styles.infoBox}>
+        <div className={styles.infoBoxTop}>
+          <div className={styles.title}>{title}</div>
+          <p className={styles.desc}>{desc}</p>
         </div>
-        <div className="card__info-box-bottom">
-          <div className="card__info-person-wrapper">
-            <div className="card__info-person">
+        <div className={styles.infoBoxBottom}>
+          <div className={styles.personWrapper}>
+            <div className={styles.person}>
               <svg
                 width="18px"
                 height="18px"
@@ -64,11 +70,11 @@ function Card({ id, title, desc, person, price, imageURL, beige, blue, green }) 
                   </g>
                 </g>
               </svg>
-              <span className="card__info-person-number">{person}</span>
+              <span className={styles.personCount}>{person}</span>
             </div>
           </div>
-          <div className="card__info-controls">
-            <div className="card__info-price">
+          <div className={styles.controls}>
+            <div className={styles.price}>
               {price}
               <svg
                 width="18px"
@@ -94,7 +100,7 @@ function Card({ id, title, desc, person, price, imageURL, beige, blue, green }) 
                 </g>
               </svg>
             </div>
-            <Button className="card__info-button" currObj={currObj} />
+            <Button className={styles.button} currObj={currObj} />
           </div>
         </div>
       </div>

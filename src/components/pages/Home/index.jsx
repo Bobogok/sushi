@@ -7,8 +7,6 @@ import './home.scss';
 function Home() {
   const mb = useMedia('(max-width: 760px)');
 
-  console.log(mb);
-
   return (
     <main className="home">
       {mb ? (
