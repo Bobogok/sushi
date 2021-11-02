@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { memo } from 'react';
 import classNames from 'classnames';
 import { NavLink } from 'react-router-dom';
 
 import styles from './navigation.module.scss';
 
-function Navigations({ className, closeCart, mobile }) {
+const Navigations = memo(function Navigations({ className, closeCart, mobile }) {
   const navigationLinks = [
     { title: 'Роллы', path: '/catalog/rolls' },
     { title: 'Комбо', path: '/catalog/combo' },
@@ -45,6 +45,6 @@ function Navigations({ className, closeCart, mobile }) {
       </ul>
     </nav>
   );
-}
+});
 
 export default Navigations;

@@ -14,7 +14,7 @@ function useFetchCatalog(category) {
         const { data } = await new Promise((resolve) => {
           setTimeout(() => {
             resolve(res);
-          }, 2000);
+          }, 1111);
         });
 
         setCatalogSets(data[category]);

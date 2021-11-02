@@ -1,12 +1,14 @@
-import React from 'react';
+import React, { memo } from 'react';
 import classNames from 'classnames';
 
-function CartIcon({ visible }) {
+import styles from './cart.module.scss';
+
+const CartIcon = memo(function CartIcon({ visible }) {
   return (
     <svg width="26" height="23" viewBox="0 0 26 23" version="1.1" xmlns="http://www.w3.org/2000/svg">
       <g stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
         <g
-          className={classNames('cart__icon', { visible })}
+          className={classNames(styles.icon, { [styles.visible]: visible })}
           transform="translate(-278.000000, -19.000000)"
           fill="#979797"
         >
@@ -15,6 +17,6 @@ function CartIcon({ visible }) {
       </g>
     </svg>
   );
-}
+});
 
 export default CartIcon;

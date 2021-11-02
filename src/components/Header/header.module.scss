@@ -206,17 +206,17 @@ a,
   .about {
     display: none;
   }
+
+  .cart {
+    flex: 1 1 auto;
+    display: flex;
+    justify-content: flex-end;
+  }
 }
 
 @media (max-width: 990px) {
   .header {
     max-height: none;
-  }
-
-  .cart {
-    flex: 1 1 100%;
-    display: flex;
-    justify-content: flex-end;
   }
 
   .navbar {

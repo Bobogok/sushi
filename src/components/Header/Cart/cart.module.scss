@@ -1,0 +1,27 @@
+@import 'src/styles/libs/_vars.scss';
+
+.cart {
+  &:hover {
+    .info {
+      color: $red;
+    }
+  }
+}
+.info {
+  display: flex;
+  align-items: center;
+}
+
+.count {
+  padding-right: 5px;
+}
+
+.price {
+  padding: 0 10px 0 5px;
+}
+
+.icon {
+  &.visible {
+    fill: $red;
+  }
+}

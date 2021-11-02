@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import useMediaQueries from '../hooks/useMediaQueries';
 import useCheckPage from './hooks/useCheckPage';
@@ -35,6 +35,27 @@ function Header() {
     return () => document.removeEventListener('mousedown', handler);
   }, []);
 
+  const memoizedMenu = useMemo(
+    () => (
+      <>
+        <div className={`${styles.mobileMenu} ${cartOpened ? styles.visible : ''}`}>
+          <Link to="/" onClick={closeCart}>
+            <img
+              className={styles.mobileImage}
+              height="38"
+              width="auto"
+              src={smb ? `${process.env.PUBLIC_URL}/img/banner-logo.png` : `${process.env.PUBLIC_URL}/img/logo.png`}
+              alt="logo"
+            />
+          </Link>
+          <Navigation className={styles.mobileNavbar} closeCart={closeCart} mobile />
+        </div>
+        <div className={`${styles.overlay} ${cartOpened ? styles.visible : ''}`} />
+      </>
+    ),
+    [cartOpened, smb]
+  );
+
   return (
     <header className={styles.header}>
       <div className={`${styles.inner} container`}>
@@ -54,23 +75,7 @@ function Header() {
             </span>
           </button>
         )}
-        {mb && (
-          <>
-            <div className={`${styles.mobileMenu} ${cartOpened ? styles.visible : ''}`}>
-              <Link to="/" onClick={closeCart}>
-                <img
-                  className={styles.mobileImage}
-                  height="38"
-                  width="auto"
-                  src={smb ? `${process.env.PUBLIC_URL}/img/banner-logo.png` : `${process.env.PUBLIC_URL}/img/logo.png`}
-                  alt="logo"
-                />
-              </Link>
-              <Navigation className={styles.mobileNavbar} closeCart={closeCart} mobile />
-            </div>
-            <div className={`${styles.overlay} ${cartOpened ? styles.visible : ''}`} />
-          </>
-        )}
+        {mb && memoizedMenu}
         {!mb && (
           <Link to="/" className={styles.imageContainer}>
             <Logo />
@@ -145,10 +150,7 @@ function Header() {
           </div>
         )}
         {!tb && !mb && !checkMainPage && <Navigation className={styles.navbar} />}
-        <div
-          className={styles.about}
-          style={{ flex: checkMainPage ? '1 1 auto' : 'none', display: checkMainPage && 'block' }}
-        >
+        <div className={styles.about} style={{ flex: checkMainPage ? '1 1 auto' : 'none' }}>
           <div className={styles.aboutTop}>
             <a className={styles.aboutLink} href="#">
               О компании

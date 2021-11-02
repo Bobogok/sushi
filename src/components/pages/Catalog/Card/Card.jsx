@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { memo } from 'react';
 import classNames from 'classnames';
 
 import Button from '../Button';
 
 import styles from './card.module.scss';
 
-function Card({ id, title, desc, person, price, imageURL, beige, blue, green }) {
+const Card = memo(function Card({ id, title, desc, person, price, imageURL, beige, blue, green }) {
   const currObj = {
     id,
     title,
@@ -106,6 +106,6 @@ function Card({ id, title, desc, person, price, imageURL, beige, blue, green }) 
       </div>
     </div>
   );
-}
+});
 
 export default Card;

@@ -159,10 +159,14 @@
   }
 }
 
-@media (max-width: 750px) {
+@media (max-width: 768px) {
   .button {
     height: 5vw;
     font-size: 1.75vw;
+    font-size: 1.75vh;
+    height: 50px;
+    width: 10vh;
+    flex: none;
   }
 }
 
@@ -179,12 +183,5 @@
     svg {
       height: 1.5vh;
     }
-  }
-
-  .button {
-    font-size: 1.75vh;
-    height: 50px;
-    width: 10vh;
-    flex: none;
   }
 }

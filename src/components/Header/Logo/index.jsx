@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { memo } from 'react';
 import useMediaQueries from '../../hooks/useMediaQueries';
 
 import styles from './logo.module.scss';
 
-function Logo() {
+const Logo = memo(function Logo() {
   const { xxl } = useMediaQueries();
 
   return (
@@ -16,6 +16,6 @@ function Logo() {
       />
     </>
   );
-}
+});
 
 export default Logo;
