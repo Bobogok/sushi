@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 
 import styles from './navigation.module.scss';
 
-const Navigations = memo(function Navigations({ className, closeCart, tablet }) {
+const Navigations = memo(function Navigations({ className, tablet }) {
   const navigationLinks = [
     { title: 'Роллы', path: '/catalog/rolls' },
     { title: 'Комбо', path: '/catalog/combo' },
@@ -31,12 +31,7 @@ const Navigations = memo(function Navigations({ className, closeCart, tablet }) 
             </li>
           ) : (
             <li key={obj.title} className={classNames(styles.elem)}>
-              <NavLink
-                to={obj.path}
-                className={styles.link}
-                onClick={() => closeCart && closeCart()}
-                activeClassName={styles.active}
-              >
+              <NavLink to={obj.path} className={styles.link} activeClassName={styles.active}>
                 {obj.title}
               </NavLink>
             </li>

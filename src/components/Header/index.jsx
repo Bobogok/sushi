@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import useMediaQueries from '../hooks/useMediaQueries';
 import useCheckPage from './hooks/useCheckPage';
@@ -8,53 +8,22 @@ import Logo from './Logo';
 import Navigation from './Navigation';
 import Cashback from './Cashback';
 import Cart from './Cart';
+import Sidemenu from './Sidemenu';
 
 import styles from './header.module.scss';
 
 function Header() {
   const [cartOpened, setCartOpened] = useState(false);
   const checkMainPage = useCheckPage('/');
-  const { tb, mb, smb } = useMediaQueries();
+  const { tb } = useMediaQueries();
 
-  const openCart = () => {
+  const openCart = useCallback(() => {
     setCartOpened(true);
-  };
+  }, [setCartOpened]);
 
-  const closeCart = () => {
+  const closeCart = useCallback(() => {
     setCartOpened(false);
-  };
-
-  useEffect(() => {
-    const handler = (e) => {
-      if (e.target.className === `${styles.overlay} ${styles.visible}`) {
-        setCartOpened(false);
-      }
-    };
-    document.addEventListener('mousedown', handler);
-
-    return () => document.removeEventListener('mousedown', handler);
-  }, []);
-
-  const memoizedMenu = useMemo(
-    () => (
-      <>
-        <div className={`${styles.mobileMenu} ${cartOpened ? styles.visible : ''}`}>
-          <Link to="/" onClick={closeCart}>
-            <img
-              className={styles.mobileImage}
-              height="38"
-              width="auto"
-              src={smb ? `${process.env.PUBLIC_URL}/img/banner-logo.png` : `${process.env.PUBLIC_URL}/img/logo.png`}
-              alt="logo"
-            />
-          </Link>
-          <Navigation className={styles.mobileNavbar} closeCart={closeCart} />
-        </div>
-        <div className={`${styles.overlay} ${cartOpened ? styles.visible : ''}`} />
-      </>
-    ),
-    [cartOpened, smb]
-  );
+  }, [setCartOpened]);
 
   return (
     <header className={styles.header}>
@@ -75,7 +44,7 @@ function Header() {
             </span>
           </button>
         )}
-        {mb && memoizedMenu}
+        <Sidemenu cartOpened={cartOpened} closeCart={closeCart} />
         <Link to="/" className={styles.imageContainer}>
           <Logo />
         </Link>

@@ -1,0 +1,47 @@
+@import 'src/styles/libs/_vars.scss';
+
+.menu {
+  transform: translateX(-100%);
+  transition: transform 0.3s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 85%;
+  height: auto;
+  max-height: none;
+  overflow-y: auto;
+  background-color: $white;
+  z-index: 1100;
+
+  &.visible {
+    transform: translateX(0%);
+  }
+}
+
+.image {
+  width: 23px;
+  height: 19px;
+}
+
+.overlay {
+  display: none;
+  opacity: 0;
+  transition: opacity 0.3s;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1000;
+  background-color: rgba(3, 3, 3, 0.6);
+
+  &.visible {
+    display: block;
+    opacity: 1;
+  }
+}
