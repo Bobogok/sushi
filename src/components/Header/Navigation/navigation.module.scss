@@ -8,19 +8,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-
-  &--mb {
-    flex-direction: column;
-
-    .elem {
-      margin-left: 0;
-      padding: 20px 0;
-    }
-
-    .link {
-      font-size: 30px !important;
-    }
-  }
 }
 
 .elem {
@@ -35,12 +22,6 @@
   &:hover {
     a:not(.active) {
       color: $red;
-    }
-  }
-
-  &--mb {
-    & + & {
-      margin-left: 0px;
     }
   }
 }
@@ -61,9 +42,19 @@
   }
 }
 
+@media (min-width: 635px) and (max-width: 1100px) {
+  .navigation {
+    display: none;
+
+    &--tb {
+      display: block;
+    }
+  }
+}
+
 @media (max-width: 635px) {
   .navigation {
-    flex: none;
+    display: none;
   }
 }
 
